@@ -4,6 +4,8 @@ from app.models import User
 
 from flask_script import Manager,Server
 
+from  flask_migrate import Migrate, MigrateCommand
+
 app = create_app('development')
 
 manager = Manager(app)
@@ -17,6 +19,9 @@ def test():
 @manager.shell
 def make_shell_context():
     return dict(app = app,db = db,User = User,Pitch=Pitch)
+
+migrate = Migrate(app,db)
+manager.add_command('db',MigrateCommand)
 
 if __name__ == '__main__':
 
