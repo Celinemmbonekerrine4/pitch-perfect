@@ -1,0 +1,4 @@
+Hey {{user.pitch}}
+Welcome To Perfect pitch
+We've just seen you sign up for our amazing pitch application and we are welcoming you to our nice inspirational family. please feel free and enjoy all the pitches that you want.
+Welcome!!
