@@ -1,7 +1,8 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
 from flask_login import login_user,logout_user,login_required
-from .forms import LoginForm,RegistrationForm
+from .forms import LoginForm,RegistrationForm,UpdateProfile
+from .. import db
 from ..models import User
 
 
