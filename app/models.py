@@ -15,32 +15,14 @@ class Pitch(db.Model):
   posted = db.Column(db.DateTime,default=datetime.utcnow)
   user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
-   def  __init__(self,id,title,pitch,vote_average,vote_count):
-    self.id = id
-    self.title = title
-    self.pitch = pitch
-    self.vote_average = vote_average
-    self.vote_count = vote_count
-
-    all_pitches = []
-
-    def save_pitch(self):
-        Pitch.all_pitches.append(self)
+  def save_pitch(self):
+        db.session.add(self)
+        db.session.commit()
 
     @classmethod
-    def clear_pitches(cls):
-      Pitch.all_pitches.clear()
-
-    @classmethod
-    def get_pitches(cls):
-
-      response = []
-
-      for pitch in cls.all_pitches:
-        if pitch.pitch_id == id:
-          response.append(pitch)
-
-        return response
+    def get_pitch(cls,id):
+        pitch = Pitch.query.filter_by(pitch_id=id).all()
+        return pitches
 
 
     
