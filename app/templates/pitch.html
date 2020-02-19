@@ -1,23 +1,8 @@
-{%extends base.html%}
+{% extends 'base.html' %}
 
 {%block content%}
 
-<div class="container">
-<div class="jumbotron">
-    {%block index.html%}
-        {%include 'index.html'%}
-    {%endblock%}
 
-    <div class="rates">
-            <h3>{{ pitch.title }}</h3>
-
-            <p class="ratings"> <b> {{ pitch.vote_average }}</b> - <i>{{ pitch.vote_count}} votes </i> </p>
-
-
-</div>
-
-</div>
-{%endblock%}
 <div class="row">
 
         <h1>Pitches</h1>
@@ -29,7 +14,7 @@
         {% else%}
             <h3 class="text-center">Oops!! no pitch </h3>
 
-            <a class="btn btn-success btn-lg text-center" href="/pitch/new/{{pitch.id}}"> Write a new pitch</a>
         {% endif %}
 
     </div>
+{%endblock%}

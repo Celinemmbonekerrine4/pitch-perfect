@@ -22,16 +22,24 @@ def index():
 
     title = 'Home - Get and Make a pitch'
 
-@main.route('/login', methods = ['GET','POST'])
+@main.route('/user/<uname>/update', methods = ['GET','POST'])
 @login_required
-def login():
-    login_user()
-def profile(uname):
+def update_profile(uname):
     user = User.query.filter_by(username = uname).first()
-
     if user is None:
         abort(404)
-    render_template('profile/profile.html',user = user)
+
+form = UpdateProfile()
+
+    if form.validate_on_submit():
+        user.bio = form.bio.data
+
+        db.session.add(user)
+        db.session.commit()
+
+        return redirect(url_for('.profile',uname=user.username))
+
+    return render_template('profile/update.html',form =form)
 
 
 

@@ -9,8 +9,12 @@ class ProdConfig(Config):
     pass
 
 class DevConfig(Config):
+    '''
+    child class for the configuration
+    '''
+    pass
 
-    config_options  = {
-        'development':DevConfig,
-        'production':ProdConfig
-        }
+config_options = {
+'development':DevConfig,
+'production':ProdConfig
+}
