@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        {%if title%}
-        <title>{{title}}</title>
-        {%else%}
-        <title>Pitch Out!!</title>
-        {%endif%}
+
         {%extends 'bootstrap/base.html'%}
-    </head>
-    <body>
+    
+    
         {%block navbar%}
         {%include 'navbar.html'%}
         {%endblock%}
@@ -17,6 +9,12 @@
 
         {%block content%}
 
+
         {%endblock%}
-    </body>
-</html>
+
+        {%block styles%}
+        {{super}}
+        {{ simplemde.css}}
+        {{ simplemde.js }}
+        {%endblock%}
+    

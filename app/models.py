@@ -6,7 +6,7 @@ from datetime import datetime
 
 class Pitch(db.Model):
 
-   __tablename__ = 'pitches'
+  __tablename__ = 'pitches'
   id = db.Column(db.Integer,primary_key = True)
   pitch_id = db.Column(db.Integer)
   pitch_title = db.Column(db.String)
@@ -16,17 +16,17 @@ class Pitch(db.Model):
   user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
   def save_pitch(self):
-        db.session.add(self)
-        db.session.commit()
+      db.session.add(self)
+      db.session.commit()
 
-    @classmethod
-    def get_pitch(cls,id):
-        pitch = Pitch.query.filter_by(pitch_id=id).all()
-        return pitches
+  @classmethod
+  def get_pitch(cls,id):
+      pitch = Pitch.query.filter_by(pitch_id=id).all()
+      return pitch
 
 
-    
-      def __repr__(self):
+  
+  def __repr__(self):
         return f'User{self.name}'
 
 
@@ -44,9 +44,71 @@ class User(UserMixin,db.Model):
     password_secure = db.Column(db.String(255))
 
 
-@login_manager.user_loader
-def load_user(user_id):
-  return User.query.get(int(user_id))
+
+class Interview:
+
+  all_interviews = []
+
+  def __init__(self,title,pitch):
+    self.title = title
+    self.pitch = pitch
+
+  def save_interview(self):
+      Interview.all_interview.append(self)
+
+
+class BusinessPlan:
+
+  all_businessplans = []
+  
+  def __init__(self,title,pitch):
+    self.title = title
+    self.pitch = pitch
+
+  def save_businessplan(self):
+      BusinessPlan.all_businessplans.append(self)
+ 
+
+class Life:
+
+  all_life = []
+
+def __init__(self,title,pitch):
+  self.title = title
+  self.pitch = pitch
+
+def save_life(self):
+    Life.all_life.append(self)
+
+
+class Comment:
+
+  all_comments = []
+
+def __init__(self,title,pitch,user):
+  self.title = title
+  self.pitch = pitch
+  self.comment = comment
+  self.user = user
+
+  def save_comment(self):
+      comment.all_comments.append(self)
+
+  @classmethod
+  def get_pitch(cls):
+
+    response = []
+
+    for pitch in cls.all_businessplans:
+      response.append(pitch)
+
+      return response
+ 
+ 
+
+  @login_manager.user_loader
+  def load_user(user_id):
+      return User.query.get(int(user_id))
   
 
 
